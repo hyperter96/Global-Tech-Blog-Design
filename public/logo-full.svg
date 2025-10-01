@@ -1,0 +1,31 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo 图标部分 -->
+  <circle cx="20" cy="20" r="18" fill="url(#gradient)" />
+  
+  <!-- 地球图标 -->
+  <circle cx="20" cy="20" r="11" fill="none" stroke="white" stroke-width="1.5" />
+  
+  <!-- 经线 -->
+  <ellipse cx="20" cy="20" rx="3.5" ry="11" fill="none" stroke="white" stroke-width="1.2" />
+  <ellipse cx="20" cy="20" rx="7" ry="11" fill="none" stroke="white" stroke-width="1" />
+  
+  <!-- 纬线 -->
+  <line x1="9" y1="15" x2="31" y2="15" stroke="white" stroke-width="1" />
+  <line x1="9" y1="25" x2="31" y2="25" stroke="white" stroke-width="1" />
+  
+  <!-- 箭头表示跨境贸易 -->
+  <path d="M13 11 L17 7 L17 9 L25 9 L25 7 L29 11 L25 15 L25 13 L17 13 L17 15 L13 11 Z" fill="white" opacity="0.9" />
+  
+  <!-- 文字部分 -->
+  <text x="45" y="16" fill="currentColor" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" class="fill-slate-700 dark:fill-slate-200">跨境前沿</text>
+  <text x="45" y="28" fill="currentColor" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="400" class="fill-slate-500 dark:fill-slate-400">Cross-border Insights</text>
+  
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1D4ED8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

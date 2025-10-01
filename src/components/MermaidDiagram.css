@@ -1,0 +1,103 @@
+/* Mermaid 图表样式优化 */
+
+.mermaid-diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 流程图样式 */
+.mermaid-diagram .node rect,
+.mermaid-diagram .node circle,
+.mermaid-diagram .node ellipse,
+.mermaid-diagram .node polygon {
+  stroke-width: 2px;
+}
+
+/* 深色模式优化 */
+.dark .mermaid-diagram .node rect,
+.dark .mermaid-diagram .node circle,
+.dark .mermaid-diagram .node ellipse,
+.dark .mermaid-diagram .node polygon {
+  fill: #334155;
+  stroke: #60a5fa;
+}
+
+.dark .mermaid-diagram .edgeLabel {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.dark .mermaid-diagram text {
+  fill: #e2e8f0 !important;
+}
+
+.dark .mermaid-diagram .messageText {
+  fill: #e2e8f0 !important;
+}
+
+.dark .mermaid-diagram .actor {
+  fill: #334155;
+  stroke: #60a5fa;
+}
+
+.dark .mermaid-diagram line {
+  stroke: #94a3b8;
+}
+
+.dark .mermaid-diagram .loopText,
+.dark .mermaid-diagram .loopLine {
+  fill: #e2e8f0;
+  stroke: #60a5fa;
+}
+
+/* 序列图样式 */
+.mermaid-diagram .actor {
+  stroke-width: 2px;
+}
+
+/* 类图样式 */
+.mermaid-diagram .classGroup rect {
+  stroke-width: 2px;
+}
+
+/* 状态图样式 */
+.mermaid-diagram .state-title {
+  font-weight: 600;
+}
+
+/* 甘特图样式 */
+.mermaid-diagram .grid .tick {
+  stroke-width: 1px;
+  opacity: 0.3;
+}
+
+/* 确保文本可读性 */
+.mermaid-diagram .nodeLabel,
+.mermaid-diagram .edgeLabel {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .mermaid-diagram svg {
+    font-size: 12px;
+  }
+  
+  .mermaid-diagram .nodeLabel,
+  .mermaid-diagram .edgeLabel {
+    font-size: 12px;
+  }
+}
+
+/* 平滑过渡 */
+.mermaid-diagram * {
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}

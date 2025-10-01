@@ -1,0 +1,27 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆形 -->
+  <circle cx="20" cy="20" r="20" fill="url(#gradient)" />
+  
+  <!-- 地球图标 -->
+  <circle cx="20" cy="20" r="12" fill="none" stroke="white" stroke-width="1.5" />
+  
+  <!-- 经线 -->
+  <ellipse cx="20" cy="20" rx="4" ry="12" fill="none" stroke="white" stroke-width="1.2" />
+  <ellipse cx="20" cy="20" rx="8" ry="12" fill="none" stroke="white" stroke-width="1" />
+  
+  <!-- 纬线 -->
+  <line x1="8" y1="16" x2="32" y2="16" stroke="white" stroke-width="1" />
+  <line x1="8" y1="24" x2="32" y2="24" stroke="white" stroke-width="1" />
+  
+  <!-- 箭头表示跨境贸易 -->
+  <path d="M14 12 L18 8 L18 10 L26 10 L26 8 L30 12 L26 16 L26 14 L18 14 L18 16 L14 12 Z" fill="white" opacity="0.9" />
+  
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1D4ED8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

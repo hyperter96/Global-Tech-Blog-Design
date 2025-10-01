@@ -1,4 +1,9 @@
 export const enTranslations = {
+  brand: {
+    name: 'CrossBorder Pro',
+    fullName: 'Cross-border E-commerce Insights',
+    tagline: '跨境电商前沿'
+  },
   nav: {
     home: 'Home',
     categories: 'Categories',

@@ -1,4 +1,9 @@
 export const zhTranslations = {
+  brand: {
+    name: '跨境前沿',
+    fullName: '跨境电商前沿',
+    tagline: 'Cross-border E-commerce Insights'
+  },
   nav: {
     home: '首页',
     categories: '分类',

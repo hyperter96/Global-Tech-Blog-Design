@@ -6,6 +6,10 @@
 /* Import Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+/* Import highlight.js theme for code syntax highlighting */
+@import 'highlight.js/styles/github.css';
+/* Import modal animation styles */
+@import './styles/modal-animations.css';
 body {
   font-family: 'Inter', sans-serif;
   color: #1E293B;
@@ -30,4 +34,335 @@ code {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+/* 修复highlight.js背景色，使其与容器背景一致 */
+.hljs {
+  background: transparent !important;
+}
+
+/* 代码块行号对齐样式 */
+.code-with-line-numbers * {
+  line-height: 24px !important;
+  font-size: inherit !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: baseline !important;
+}
+
+.code-with-line-numbers .hljs-comment,
+.code-with-line-numbers .hljs-keyword,
+.code-with-line-numbers .hljs-string,
+.code-with-line-numbers .hljs-number,
+.code-with-line-numbers .hljs-literal,
+.code-with-line-numbers .hljs-built_in,
+.code-with-line-numbers span {
+  line-height: 24px !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+}
+
+/* 代码块滚动条样式优化 */
+.code-block-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.code-block-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.code-block-container::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+}
+
+.code-block-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.dark .code-block-container::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+.dark .code-block-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);
+}
+
+/* Table of Contents 滚动条样式 */
+.toc-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.toc-scrollbar::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 3px;
+}
+
+.toc-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 3px;
+}
+
+.toc-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+.toc-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 深色模式下的 TOC 滚动条样式 */
+.dark .toc-scrollbar::-webkit-scrollbar-track {
+  background: rgba(71, 85, 105, 0.2);
+}
+
+.dark .toc-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+.dark .toc-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Toast 动画 */
+@keyframes toast-in {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Shimmer 加载动画 */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Cover图片加载动画 */
+@keyframes cover-skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-cover-pulse {
+  animation: cover-skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes toast-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: toast-in 0.3s ease-out forwards;
+}
+
+.toast-exit {
+  animation: toast-out 0.3s ease-in forwards;
+}
+
+/* 浅色模式下的代码高亮颜色调整 - GitHub风格 */
+.hljs {
+  color: #24292e !important;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #6a737d !important;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-name,
+.hljs-type {
+  color: #d73a49 !important;
+  font-weight: 600;
+}
+
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: #032f62 !important;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-built_in {
+  color: #6f42c1 !important;
+  font-weight: 600;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-boolean {
+  color: #005cc5 !important;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #e36209 !important;
+}
+
+.hljs-meta {
+  color: #005cc5 !important;
+}
+
+.hljs-tag {
+  color: #22863a !important;
+}
+
+.hljs-attr {
+  color: #6f42c1 !important;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #e36209 !important;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #e36209 !important;
+}
+
+.hljs-function {
+  color: #6f42c1 !important;
+}
+
+.hljs-deletion {
+  background-color: #ffeef0 !important;
+  color: #cb2431 !important;
+}
+
+.hljs-addition {
+  background-color: #f0fff4 !important;
+  color: #22863a !important;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* 深色模式下的代码高亮颜色调整 - GitHub Dark风格 */
+.dark .hljs {
+  color: #c9d1d9 !important;
+}
+
+.dark .hljs-comment,
+.dark .hljs-quote {
+  color: #8b949e !important;
+  font-style: italic;
+}
+
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-subst,
+.dark .hljs-name,
+.dark .hljs-type {
+  color: #ff7b72 !important;
+  font-weight: 600;
+}
+
+.dark .hljs-string,
+.dark .hljs-meta .hljs-string {
+  color: #a5d6ff !important;
+}
+
+.dark .hljs-title,
+.dark .hljs-section,
+.dark .hljs-built_in {
+  color: #d2a8ff !important;
+  font-weight: 600;
+}
+
+.dark .hljs-number,
+.dark .hljs-literal,
+.dark .hljs-boolean {
+  color: #79c0ff !important;
+}
+
+.dark .hljs-regexp,
+.dark .hljs-link {
+  color: #ffab70 !important;
+}
+
+.dark .hljs-meta {
+  color: #79c0ff !important;
+}
+
+.dark .hljs-tag {
+  color: #7ee787 !important;
+}
+
+.dark .hljs-attr {
+  color: #d2a8ff !important;
+}
+
+.dark .hljs-symbol,
+.dark .hljs-bullet {
+  color: #ffab70 !important;
+}
+
+.dark .hljs-variable,
+.dark .hljs-template-variable {
+  color: #ffab70 !important;
+}
+
+.dark .hljs-function {
+  color: #d2a8ff !important;
+}
+
+.dark .hljs-deletion {
+  background-color: #67060c !important;
+  color: #f85149 !important;
+}
+
+.dark .hljs-addition {
+  background-color: #033a16 !important;
+  color: #56d364 !important;
+}
+
+.dark .hljs-emphasis {
+  font-style: italic;
+}
+
+.dark .hljs-strong {
+  font-weight: bold;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }

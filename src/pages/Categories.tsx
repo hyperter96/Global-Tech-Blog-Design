@@ -54,29 +54,29 @@ const categories = [{
   hoverColor: 'hover:bg-red-200'
 }];
 export function Categories() {
-  return <div className="flex flex-col min-h-screen bg-slate-50">
+  return <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-900">
       <Header />
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-12">
-          <h1 className="text-3xl font-bold text-slate-800 mb-8">文章分类</h1>
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-200 mb-8">文章分类</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map(category => <div key={category.id} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-lg">
-                <div className="h-48 overflow-hidden">
+            {categories.map(category => <div key={category.id} className="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden transition-transform hover:-translate-y-1 hover:shadow-lg flex flex-col h-full">
+                <div className="h-48 overflow-hidden flex-shrink-0">
                   <img src={category.image} alt={category.name} className="w-full h-full object-cover transition-transform hover:scale-105" />
                 </div>
-                <div className="p-6">
-                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 ${category.color}`}>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-4 ${category.color} self-start`}>
                     {category.name}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">
                     {category.name}
                   </h3>
-                  <p className="text-slate-600 mb-4">{category.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-500">
+                  <p className="text-slate-600 dark:text-slate-400 mb-4 flex-grow leading-relaxed">{category.description}</p>
+                  <div className="flex justify-between items-center mt-auto">
+                    <span className="text-sm text-slate-500 dark:text-slate-400">
                       {category.count} 篇文章
                     </span>
-                    <Link to={`/categories/${category.id}`} className={`text-blue-900 ${category.hoverColor} px-4 py-2 rounded-md font-medium text-sm transition-colors`}>
+                    <Link to={`/categories/${category.id}`} className={`text-blue-900 dark:text-blue-400 ${category.hoverColor} px-4 py-2 rounded-md font-medium text-sm transition-colors`}>
                       浏览文章
                     </Link>
                   </div>
