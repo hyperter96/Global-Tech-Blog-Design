@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface GiscusCommentsProps {
   repo: string;
@@ -10,7 +10,7 @@ interface GiscusCommentsProps {
   reactionsEnabled?: '1' | '0';
   emitMetadata?: '0' | '1';
   inputPosition?: 'top' | 'bottom';
-  theme?: 'light' | 'dark' | 'preferred_color_scheme' | 'transparent_dark' | 'dark_dimmed';
+  theme?: 'light' | 'dark' | 'preferred_color_scheme' | 'transparent_dark' | 'dark_dimmed' | 'cobalt' | 'dark_high_contrast' | 'light_high_contrast' | 'light_protanopia' | 'dark_protanopia' | 'light_tritanopia' | 'dark_tritanopia';
   lang?: string;
   loading?: 'lazy' | 'eager';
 }
@@ -30,6 +30,7 @@ export function GiscusComments({
   loading = 'lazy'
 }: GiscusCommentsProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const currentRef = ref.current;
@@ -37,6 +38,7 @@ export function GiscusComments({
 
     // 清除之前的 giscus 内容
     currentRef.innerHTML = '';
+    setIsLoading(true);
 
     // 创建 giscus 脚本
     const script = document.createElement('script');
@@ -57,12 +59,29 @@ export function GiscusComments({
     script.crossOrigin = 'anonymous';
     script.async = true;
 
+    // 监听脚本加载完成
+    script.onload = () => {
+      // 等待 giscus iframe 加载
+      setTimeout(() => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+          setIsLoading(false);
+        }
+      }, 500);
+    };
+
     currentRef.appendChild(script);
+
+    // 备用方案：2秒后自动隐藏加载动画
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
     return () => {
       if (currentRef) {
         currentRef.innerHTML = '';
       }
+      clearTimeout(timeout);
     };
   }, [repo, repoId, category, categoryId, mapping, term, reactionsEnabled, emitMetadata, inputPosition, theme, lang, loading]);
 
@@ -78,8 +97,33 @@ export function GiscusComments({
   }, [theme]);
 
   return (
-    <div className="giscus-container">
-      <div ref={ref} />
+    <div className="giscus-container relative">
+      {/* 加载动画 */}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center min-h-[200px] bg-white dark:bg-slate-800 rounded-lg">
+          <div className="flex flex-col items-center gap-4">
+            {/* 旋转加载器 */}
+            <div className="relative w-12 h-12">
+              <div className="absolute inset-0 border-4 border-slate-200 dark:border-slate-700 rounded-full"></div>
+              <div className="absolute inset-0 border-4 border-blue-500 dark:border-blue-400 rounded-full border-t-transparent animate-spin"></div>
+            </div>
+            {/* 加载文本 */}
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-slate-600 dark:text-slate-400">正在加载评论</span>
+              <div className="flex gap-1">
+                <span className="w-1 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                <span className="w-1 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                <span className="w-1 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Giscus 容器 - 使用淡入动画 */}
+      <div 
+        ref={ref} 
+        className={`transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+      />
     </div>
   );
 }

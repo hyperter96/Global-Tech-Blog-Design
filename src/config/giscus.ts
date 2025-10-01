@@ -2,18 +2,18 @@
 // 请到 https://giscus.app/ 配置你的 GitHub 仓库并获取以下配置信息
 
 export const giscusConfig = {
-  repo: 'your-username/your-repo', // 替换为你的 GitHub 仓库，格式：username/repo-name
-  repoId: 'your-repo-id', // 替换为你的仓库 ID，可以在 giscus.app 获取
-  category: 'General', // 替换为你的讨论分类名称
-  categoryId: 'your-category-id', // 替换为你的分类 ID，可以在 giscus.app 获取
-  mapping: 'pathname' as const, // 评论与页面的映射方式
+  repo: 'hyperter96/Global-Tech-Blog-Design', // GitHub 仓库
+  repoId: 'R_kgDOP5Arfg', // 仓库 ID
+  category: 'General', // 讨论分类名称
+  categoryId: 'DIC_kwDOP5Arfs4CwGy7', // 分类 ID
+  mapping: 'title' as const, // 使用标题映射
   strict: '0', // 严格匹配模式
-  reactionsEnabled: '1' as const, // 是否启用表情反应
-  emitMetadata: '0' as const, // 是否发出元数据
-  inputPosition: 'bottom' as const, // 输入框位置
-  theme: 'preferred_color_scheme' as const, // 主题，支持跟随系统
-  lang: 'zh-CN', // 语言
-  loading: 'lazy' as const, // 加载方式
+  reactionsEnabled: '1' as const, // 启用表情反应
+  emitMetadata: '0' as const, // 不发出元数据
+  inputPosition: 'bottom' as const, // 输入框在底部
+  theme: 'cobalt' as const, // 使用 cobalt 主题
+  lang: 'zh-CN', // 中文语言
+  loading: 'lazy' as const, // 懒加载
 };
 
 // 配置说明：
