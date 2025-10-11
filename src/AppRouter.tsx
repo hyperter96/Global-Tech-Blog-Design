@@ -11,6 +11,8 @@ import { Categories } from './pages/Categories';
 import { CategoryArticles } from './pages/CategoryArticles';
 import { Tags } from './pages/Tags';
 import { ArticleDetail } from './pages/ArticleDetail';
+import { FreeProxy } from './pages/FreeProxy';
+import { IPv6Address } from './pages/IPv6Address';
 
 // 重定向组件：从 /articles/:filename 重定向到 /article/:id
 function ArticleRedirect() {
@@ -39,6 +41,8 @@ export function AppRouter() {
         <Route path="/categories/:categoryId" element={<CategoryArticles />} />
         <Route path="/tags" element={<Tags />} />
         <Route path="/article/:id" element={<ArticleDetail />} />
+        <Route path="/tools/free-proxy" element={<FreeProxy />} />
+        <Route path="/tools/ipv6-address" element={<IPv6Address />} />
         {/* 重定向 /articles/:filename 到 /article/:id */}
         <Route path="/articles/:filename" element={<ArticleRedirect />} />
       </Routes>

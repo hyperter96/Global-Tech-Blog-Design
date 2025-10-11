@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
-import { SearchIcon, MenuIcon, XIcon, SunIcon, MoonIcon, GlobeIcon } from 'lucide-react';
+import { SearchIcon, MenuIcon, XIcon, SunIcon, MoonIcon, GlobeIcon, ChevronDownIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { LanguageContext } from '../contexts/LanguageContext';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isToolsOpen, setIsToolsOpen] = useState(false);
   
   const {
     theme,
@@ -58,6 +59,41 @@ export function Header() {
             <Link to="/tags" className="text-slate-700 dark:text-slate-300 hover:text-blue-900 dark:hover:text-blue-400 font-medium">
               {t.nav.tags}
             </Link>
+            {/* Tools Dropdown */}
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsToolsOpen(true)}
+              onMouseLeave={() => setIsToolsOpen(false)}
+            >
+              <button
+                type="button"
+                className="flex items-center gap-1 text-slate-700 dark:text-slate-300 hover:text-blue-900 dark:hover:text-blue-400 font-medium"
+              >
+                工具
+                <ChevronDownIcon className="h-4 w-4" />
+              </button>
+              {/* Dropdown Menu */}
+              <div className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 transition-all duration-200 ${
+                isToolsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+              }`}>
+                <div className="py-1" role="menu">
+                  <Link
+                    to="/tools/free-proxy"
+                    className="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-900 dark:hover:text-blue-400"
+                    role="menuitem"
+                  >
+                    免费代理
+                  </Link>
+                  <Link
+                    to="/tools/ipv6-address"
+                    className="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-900 dark:hover:text-blue-400"
+                    role="menuitem"
+                  >
+                    IPv6地址
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link to="/about" className="text-slate-700 dark:text-slate-300 hover:text-blue-900 dark:hover:text-blue-400 font-medium">
               {t.nav.about}
             </Link>
@@ -129,6 +165,18 @@ export function Header() {
             <Link to="/tags" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
               {t.nav.tags}
             </Link>
+            {/* Mobile Tools Menu */}
+            <div>
+              <div className="px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-300">
+                工具
+              </div>
+              <Link to="/tools/free-proxy" className="block pl-6 pr-3 py-2 rounded-md text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800">
+                免费代理
+              </Link>
+              <Link to="/tools/ipv6-address" className="block pl-6 pr-3 py-2 rounded-md text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800">
+                IPv6地址
+              </Link>
+            </div>
             <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
               {t.nav.about}
             </Link>
